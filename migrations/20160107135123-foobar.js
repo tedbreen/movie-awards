@@ -11,7 +11,10 @@ module.exports = {
       }
     , title: {
         type: Sequelize.STRING
-      , defaultValue: false
+      , allowNull: false
+      }
+    , year: {
+        type: Sequelize.INTEGER
       , allowNull: false
       }
     , createdAt: {
@@ -40,7 +43,6 @@ module.exports = {
         }
       , name: {
           type: Sequelize.STRING
-        , defaultValue: false
         , allowNull: false
         }
       , createdAt: {
