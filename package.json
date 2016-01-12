@@ -1,0 +1,36 @@
+{
+  "name": "movie-awards",
+  "version": "1.0.0",
+  "description": "Database of movie award nominations and winners.",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "movies",
+    "awards",
+    "nominations",
+    "cinema",
+    "film"
+  ],
+  "author": "Edward Breen",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "express": "^4.13.3",
+    "pg": "^4.4.3",
+    "sequelize": "^3.17.1"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^2.2.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tedbreen/movie-awards.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tedbreen/movie-awards/issues"
+  },
+  "homepage": "https://github.com/tedbreen/movie-awards#readme"
+}
