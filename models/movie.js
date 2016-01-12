@@ -12,6 +12,13 @@ module.exports = function (sequelize) {
       type: Sequelize.STRING
     , allowNull: false
     }
+  , year: {
+      type: Sequelize.INTEGER
+    , allowNull: false
+    }
+  , imdb_id: {
+      type: Sequelize.STRING
+    }
   }, {
     // options
     tableName: 'movies'
@@ -20,6 +27,10 @@ module.exports = function (sequelize) {
       {
         fields: ['title']
       , unique: true
+      }
+    , {
+        fields: ['year']
+      , unique: false
       }
     ]
   })

@@ -6,6 +6,8 @@ module.exports = function movieService (sequelize) {
   var createMovie = function createMovie (req, res) {
     var newMovie = {
       title: req.body.title
+    , year: req.body.year
+    , imdb_id: req.body.imdb_id
     }
     var createFulfill = function createFulfill () {
       res.sendStatus(200)
