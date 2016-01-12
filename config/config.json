@@ -1,0 +1,6 @@
+{
+  "development": {
+    "url": "postgres://tedbreen@localhost/movie_awards",
+    "dialect": "postgres"
+  }
+}
