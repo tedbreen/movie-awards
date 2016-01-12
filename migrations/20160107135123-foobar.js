@@ -17,6 +17,9 @@ module.exports = {
         type: Sequelize.INTEGER
       , allowNull: false
       }
+    , imdb_id: {
+        type: Sequelize.STRING
+      }
     , createdAt: {
         type: Sequelize.DATE
       }
@@ -28,12 +31,17 @@ module.exports = {
       comment: 'Award nominated movies'
     , indexes: [
         {
-          field: ['title']
+          fields: ['title']
         , unique: true
+        }
+      , {
+          fields: ['year']
+        , unique: false
         }
       ]
     }).then(function fulfilled () {
       console.log('CREATE TABLE: movies')
+
       return queryInterface.createTable('awards', {
         // attributes
         id: {
