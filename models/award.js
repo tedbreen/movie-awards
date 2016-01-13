@@ -5,6 +5,7 @@ module.exports = function (sequelize) {
     // attributes
     id: {
       type: Sequelize.INTEGER
+    , allowNull: false
     , primaryKey: true
     , autoIncrement: true
     }
@@ -15,7 +16,7 @@ module.exports = function (sequelize) {
   }, {
     // options
     tableName: 'awards'
-  , comment: 'Awarding bodies'
+  , comment: 'Award types'
   , indexes: [
       {
         fields: ['name']
