@@ -1,37 +1,45 @@
+var defaults = require('lodash/defaults.js')
+
+var commonData = {
+  createdAt: new Date()
+, updatedAt: new Date()
+}
+
 module.exports = {
-  up: function (queryInterface, Sequelize) {
-    queryInterface.bulkInsert('categories', [
-      {title: 'Actor',                        createdAt: new Date(), updatedAt: new Date()}
-    , {title: 'Actor - Drama',                createdAt: new Date(), updatedAt: new Date()}
-    , {title: 'Actor - Musical or Comedy',    createdAt: new Date(), updatedAt: new Date()}
-    , {title: 'Actress',                      createdAt: new Date(), updatedAt: new Date()}
-    , {title: 'Actress - Drama',              createdAt: new Date(), updatedAt: new Date()}
-    , {title: 'Actress - Musical or Comedy',  createdAt: new Date(), updatedAt: new Date()}
-    , {title: 'Animated Feature',             createdAt: new Date(), updatedAt: new Date()}
-    , {title: 'Cinematography',               createdAt: new Date(), updatedAt: new Date()}
-    , {title: 'Costume Design',               createdAt: new Date(), updatedAt: new Date()}
-    , {title: 'Director',                     createdAt: new Date(), updatedAt: new Date()}
-    , {title: 'Documentary Feature',          createdAt: new Date(), updatedAt: new Date()}
-    , {title: 'Film Editing',                 createdAt: new Date(), updatedAt: new Date()}
-    , {title: 'Foreign Language Film',        createdAt: new Date(), updatedAt: new Date()}
-    , {title: 'Makeup and Hairstyling',       createdAt: new Date(), updatedAt: new Date()}
-    , {title: 'Original Score',               createdAt: new Date(), updatedAt: new Date()}
-    , {title: 'Original Song',                createdAt: new Date(), updatedAt: new Date()}
-    , {title: 'Picture',                      createdAt: new Date(), updatedAt: new Date()}
-    , {title: 'Picture - Drama',              createdAt: new Date(), updatedAt: new Date()}
-    , {title: 'Picture - Musical or Comedy',  createdAt: new Date(), updatedAt: new Date()}
-    , {title: 'Production Design',            createdAt: new Date(), updatedAt: new Date()}
-    , {title: 'Screenplay',                   createdAt: new Date(), updatedAt: new Date()}
-    , {title: 'Screenplay - Adapted',         createdAt: new Date(), updatedAt: new Date()}
-    , {title: 'Screenplay - Original',        createdAt: new Date(), updatedAt: new Date()}
-    , {title: 'Sound Editing',                createdAt: new Date(), updatedAt: new Date()}
-    , {title: 'Supporting Actor',             createdAt: new Date(), updatedAt: new Date()}
-    , {title: 'Supporting Actress',           createdAt: new Date(), updatedAt: new Date()}
-    , {title: 'Visual Effects',               createdAt: new Date(), updatedAt: new Date()}
+  up: function (queryInterface) {
+    return queryInterface.bulkInsert('categories', [
+      defaults({title: 'Actor'}, commonData)
+    , defaults({title: 'Actor - Drama'}, commonData)
+    , defaults({title: 'Actor - Musical or Comedy'}, commonData)
+    , defaults({title: 'Actor - Supporting'}, commonData)
+    , defaults({title: 'Actress'}, commonData)
+    , defaults({title: 'Actress - Drama'}, commonData)
+    , defaults({title: 'Actress - Musical or Comedy'}, commonData)
+    , defaults({title: 'Actress - Supporting'}, commonData)
+    , defaults({title: 'Animated Feature'}, commonData)
+    , defaults({title: 'Cinematography'}, commonData)
+    , defaults({title: 'Costume Design'}, commonData)
+    , defaults({title: 'Director'}, commonData)
+    , defaults({title: 'Documentary Feature'}, commonData)
+    , defaults({title: 'Film Editing'}, commonData)
+    , defaults({title: 'Foreign Language Film'}, commonData)
+    , defaults({title: 'Makeup and Hairstyling'}, commonData)
+    , defaults({title: 'Original Score'}, commonData)
+    , defaults({title: 'Original Song'}, commonData)
+    , defaults({title: 'Picture'}, commonData)
+    , defaults({title: 'Picture - Drama'}, commonData)
+    , defaults({title: 'Picture - Musical or Comedy'}, commonData)
+    , defaults({title: 'Production Design'}, commonData)
+    , defaults({title: 'Screenplay'}, commonData)
+    , defaults({title: 'Screenplay - Adapted'}, commonData)
+    , defaults({title: 'Screenplay - Original'}, commonData)
+    , defaults({title: 'Sound Editing'}, commonData)
+    , defaults({title: 'Sound Mixing'}, commonData)
+    , defaults({title: 'Visual Effects'}, commonData)
     ])
   },
 
-  down: function (queryInterface, Sequelize) {
+  down: function (queryInterface) {
     return queryInterface.bulkDelete('categories', null, {})
   }
 }
