@@ -1,8 +1,7 @@
 var Sequelize = require('sequelize')
 
 module.exports = function (sequelize) {
-  var Movie = sequelize.define('Movie', {
-    // attributes
+  var movieAttrs = {
     id: {
       type: Sequelize.INTEGER
     , allowNull: false
@@ -17,13 +16,11 @@ module.exports = function (sequelize) {
       type: Sequelize.INTEGER
     , allowNull: false
     }
-  , imdb_id: {
-      type: Sequelize.STRING
-    }
-  }, {
-    // options
+  }
+
+  var movieOpts = {
     tableName: 'movies'
-  , comment: 'Award nominated movies'
+  , comment: 'Movies nominated for awards'
   , indexes: [
       {
         fields: ['title']
@@ -31,10 +28,9 @@ module.exports = function (sequelize) {
       }
     , {
         fields: ['year']
-      , unique: false
       }
     ]
-  })
+  }
 
-  return Movie
+  return sequelize.define('Movie', movieAttrs, movieOpts)
 }

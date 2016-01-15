@@ -1,8 +1,7 @@
 var Sequelize = require('sequelize')
 
 module.exports = function (sequelize) {
-  var Category = sequelize.define('Category', {
-    // attributes
+  var catAttrs = {
     id: {
       type: Sequelize.INTEGER
     , allowNull: false
@@ -13,8 +12,9 @@ module.exports = function (sequelize) {
       type: Sequelize.STRING
     , allowNull: false
     }
-  }, {
-    // options
+  }
+
+  var catOpts = {
     tableName: 'categories'
   , comment: 'Award categories'
   , indexes: [
@@ -23,7 +23,7 @@ module.exports = function (sequelize) {
       , unique: true
       }
     ]
-  })
+  }
 
-  return Category
+  return sequelize.define('Category', catAttrs, catOpts)
 }

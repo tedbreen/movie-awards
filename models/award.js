@@ -1,8 +1,7 @@
 var Sequelize = require('sequelize')
 
 module.exports = function (sequelize) {
-  var Award = sequelize.define('Award', {
-    // attributes
+  var awardAttrs = {
     id: {
       type: Sequelize.INTEGER
     , allowNull: false
@@ -13,8 +12,9 @@ module.exports = function (sequelize) {
       type: Sequelize.STRING
     , allowNull: false
     }
-  }, {
-    // options
+  }
+
+  var awardOpts = {
     tableName: 'awards'
   , comment: 'Award types'
   , indexes: [
@@ -23,7 +23,7 @@ module.exports = function (sequelize) {
       , unique: true
       }
     ]
-  })
+  }
 
-  return Award
+  return sequelize.define('Award', awardAttrs, awardOpts)
 }

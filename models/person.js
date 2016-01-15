@@ -1,8 +1,7 @@
 var Sequelize = require('sequelize')
 
 module.exports = function (sequelize) {
-  var Person = sequelize.define('Person', {
-    // attributes
+  var personAttrs = {
     id: {
       type: Sequelize.INTEGER
     , allowNull: false
@@ -13,17 +12,18 @@ module.exports = function (sequelize) {
       type: Sequelize.STRING
     , allowNull: false
     }
-  }, {
-    // options
+  }
+
+  var personOpts = {
     tableName: 'persons'
-  , comment: 'Persons nominated for movie awards'
+  , comment: 'Persons nominated for awards'
   , indexes: [
       {
         fields: ['name']
       , unique: true
       }
     ]
-  })
+  }
 
-  return Person
+  return sequelize.define('Person', personAttrs, personOpts)
 }
