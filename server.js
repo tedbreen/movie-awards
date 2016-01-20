@@ -17,6 +17,8 @@ var syncFulfill = function syncFulfill () {
 
   app.get('/years', queries.getYears)
 
+  app.get('/awards', queries.getAwards)
+
   app.listen(5000)
 }
 
