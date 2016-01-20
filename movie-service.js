@@ -1,39 +1,11 @@
-var models = require('./models')
+var createMovie = require('./lib/queries/movies/create-movie.js')
+var getMovieById = require('./lib/queries/movies/get-movie-by-id.js')
+var getMoviesByYear = require('./lib/queries/movies/get-movies-by-year.js')
 
 module.exports = function movieService (sequelize) {
-  var Movie = models(sequelize).Movie
-
-  var createMovie = function createMovie (req, res) {
-    var newMovie = {
-      title: req.body.title
-    , year: req.body.year
-    , imdb_id: req.body.imdb_id
-    }
-    var createFulfill = function createFulfill () {
-      res.sendStatus(200)
-    }
-    var createReject = function createReject (reason) {
-      console.error(reason)
-      res.status(500).send('There was an error creating a movie')
-    }
-
-    return Movie.create(newMovie).then(createFulfill, createReject)
-  }
-
-  var getAllMovies = function getAllMovies (req, res) {
-    var findFulfill = function findFulfill (movies) {
-      res.send(movies)
-    }
-    var findReject = function findReject (reason) {
-      console.error(reason)
-      res.status(500).send('There was an error getting the movies')
-    }
-
-    return Movie.findAll().then(findFulfill, findReject)
-  }
-
   return {
-    createMovie: createMovie
-  , getAllMovies: getAllMovies
+    createMovie: createMovie(sequelize)
+  , getMoviesByYear: getMoviesByYear(sequelize)
+  , getMovieById: getMovieById(sequelize)
   }
 }
