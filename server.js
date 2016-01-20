@@ -12,8 +12,10 @@ var sequelize = new Sequelize('postgres://tedbreen@localhost/movie_awards')
 var movieService = require('./movie-service.js')(sequelize)
 
 var syncFulfill = function syncFulfill () {
-  app.get('/movies', movieService.getAllMovies)
   app.post('/movies', movieService.createMovie)
+  app.get('/movies/:id', movieService.getMovieById)
+  app.get('/movies/year/:year', movieService.getMoviesByYear)
+
   app.listen(5000)
 }
 
