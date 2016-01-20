@@ -9,12 +9,11 @@ app.use(bodyParser.json())
 // sequelize initialization
 var sequelize = new Sequelize('postgres://tedbreen@localhost/movie_awards')
 
-var movieService = require('./movie-service.js')(sequelize)
+var queries = require('./lib/queries')(sequelize)
 
 var syncFulfill = function syncFulfill () {
-  app.post('/movies', movieService.createMovie)
-  app.get('/movies/:id', movieService.getMovieById)
-  app.get('/movies/year/:year', movieService.getMoviesByYear)
+  app.post('/movies', queries.createMovie)
+  app.get('/movies/:id', queries.getMovieById)
 
   app.listen(5000)
 }
