@@ -22,6 +22,8 @@ var syncFulfill = function syncFulfill () {
 
   app.get('/categories', queries.getCategories)
 
+  app.put('/nominations/:id', queries.updateNomination)
+
   app.listen(5000)
 }
 
