@@ -13,6 +13,7 @@ var queries = require('./lib/queries')(sequelize)
 
 var syncFulfill = function syncFulfill () {
   app.post('/movies', queries.createMovie)
+  app.get('/movies', queries.getMovies)
   app.get('/movies/:id', queries.getMovieById)
 
   app.get('/years', queries.getYears)
