@@ -1,4 +1,5 @@
 var Sequelize = require('sequelize')
+var Award = require('./award.js')
 
 module.exports = function (sequelize) {
   var catAttrs = {
@@ -20,10 +21,28 @@ module.exports = function (sequelize) {
   , indexes: [
       {
         fields: ['title']
+      }
+    , {
+        fields: ['award_id']
+      }
+    , {
+        name: 'categories_with_award_id'
+      , fields: ['title', 'award_id']
       , unique: true
       }
     ]
   }
 
-  return sequelize.define('Category', catAttrs, catOpts)
+  var Category = sequelize.define('Category', catAttrs, catOpts)
+
+  // associations
+  Category.belongsTo(Award(sequelize), {
+    foreignKey: {
+      name: 'award_id'
+    , allowNull: false
+    , onDelete: 'CASCADE'
+    }
+  })
+
+  return Category
 }
