@@ -4,27 +4,32 @@ var bodyParser = require('body-parser')
 
 // create app
 var app = express()
+
 app.use(bodyParser.json())
+
+var port = 5000
 
 // sequelize initialization
 var sequelize = new Sequelize('postgres://tedbreen@localhost/movie_awards')
 
-var queries = require('./lib/queries')(sequelize)
+var queries = require('./api/lib/queries')(sequelize)
 
 var syncFulfill = function syncFulfill () {
-  app.post('/movies', queries.createMovie)
-  app.get('/movies', queries.getMovies)
-  app.get('/movies/:id', queries.getMovieById)
+  app.post('/api/movies', queries.createMovie)
+  app.get('/api/movies', queries.getMovies)
+  app.get('/api/movies/:id', queries.getMovieById)
 
-  app.get('/years', queries.getYears)
+  app.get('/api/years', queries.getYears)
 
-  app.get('/awards', queries.getAwards)
+  app.get('/api/awards', queries.getAwards)
 
-  app.get('/categories', queries.getCategories)
+  app.get('/api/categories', queries.getCategories)
 
-  app.put('/nominations/:id', queries.updateNomination)
+  app.put('/api/nominations/:id', queries.updateNomination)
 
-  app.listen(5000)
+  app.listen(5000, function listenCB () {
+    console.log(`movie-awards server is listening on port ${port}`)
+  })
 }
 
 var syncReject = function syncReject (err) {
