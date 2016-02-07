@@ -36,13 +36,13 @@ module.exports = function (sequelize) {
         res.status(500).send(err)
       }
 
-      return sequelize.query(query, queryOptions).then(fulfill, reject)      
+      return sequelize.query(query, queryOptions).then(fulfill, reject)
     }
 
     // The following method, using Sequelize model and instance methods, involves two queries.
     // Raw query gets it done with just one query.
-  
-    /* 
+
+    /*
 
     var fulfill = function fulfill (nomination) {
       if (!nomination) {
@@ -59,7 +59,7 @@ module.exports = function (sequelize) {
     }
 
     var reject = function reject (err) {
-      res.status(500).send(err)      
+      res.status(500).send(err)
     }
 
     return Nomination.findById(id).then(fulfill, reject)

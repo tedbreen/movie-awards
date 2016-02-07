@@ -96,9 +96,9 @@ module.exports = {
     , defaults({name: 'Tom McCarthy'}, commonData)
     , defaults({name: 'Will Smith'}, commonData)
     ])
-  },
+  }
 
-  down: function (queryInterface) {
+, down: function (queryInterface) {
     return queryInterface.bulkDelete('persons', null, {})
   }
 }

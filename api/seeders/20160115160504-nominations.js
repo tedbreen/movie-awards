@@ -231,9 +231,9 @@ module.exports = {
     , defaults({category_id: 35, movie_id: 23}, commonData)
     , defaults({category_id: 35, movie_id: 58}, commonData)
     ])
-  },
+  }
 
-  down: function (queryInterface) {
-    return queryInterface.bulkDelete('nominations', null, {});
+, down: function (queryInterface) {
+    return queryInterface.bulkDelete('nominations', null, {})
   }
 }

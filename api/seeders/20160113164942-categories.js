@@ -47,9 +47,9 @@ module.exports = {
     , defaults({award_id: 2, title: 'Original Song'}, commonData)
       // BAFTA - coming soon!
     ])
-  },
+  }
 
-  down: function (queryInterface) {
+, down: function (queryInterface) {
     return queryInterface.bulkDelete('categories', null, {})
   }
 }
