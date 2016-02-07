@@ -35,7 +35,7 @@ module.exports = function (sequelize) {
     }
 
     var reject = function reject (err) {
-      res.status(500).send(err)      
+      res.status(500).send(err)
     }
 
     return sequelize.query(query, queryOptions).then(fulfill, reject)
